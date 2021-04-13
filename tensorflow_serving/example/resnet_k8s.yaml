@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: resnet-container
-        image: gcr.io/tensorflow-serving/resnet
+        image: gcr.io/cloudmlplat/tensorflow-serving/resnet
         ports:
         - containerPort: 8500
 ---

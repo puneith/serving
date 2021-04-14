@@ -1,0 +1,8 @@
+#Welcome to the Demo
+
+#Let's setup some ABM infrastructure on GCE using Terraform
+git clone https://github.com/GoogleCloudPlatform/anthos-samples.git
+cd anthos-samples
+git checkout abm-gcp-tf-demo
+
+#Make changes to cluster names

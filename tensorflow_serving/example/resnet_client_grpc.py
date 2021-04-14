@@ -23,6 +23,7 @@ from __future__ import print_function
 import grpc
 import requests
 import tensorflow as tf
+import sys
 
 from tensorflow_serving.apis import predict_pb2
 from tensorflow_serving.apis import prediction_service_pb2_grpc
@@ -30,18 +31,23 @@ from google.protobuf.json_format import MessageToDict
 
 # The image URL is the location of the image we should send to the server
 # CAT IMAGE
-IMAGE_URL = 'https://tensorflow.org/images/blogs/serving/cat.jpg'
+#IMAGE_URL = 'https://tensorflow.org/images/blogs/serving/cat.jpg'
 
 #DOG IMAGE
-IMAGE_URL = 'https://i.redd.it/th4e32wiqwx31.jpg'
+#IMAGE_URL = 'https://i.redd.it/th4e32wiqwx31.jpg'
 
 #HORSE IMAGE
-IMAGE_URL = 'https://i.pinimg.com/originals/f6/09/26/f60926f7f4c63aedebdc7af8d4211122.jpg'
+#IMAGE_URL = 'https://i.pinimg.com/originals/f6/09/26/f60926f7f4c63aedebdc7af8d4211122.jpg'
 
 #HORSE IMAGE 2
-IMAGE_URL = 'https://pixabay.com/get/g89677359be522a27c26fc97ad248a3d180c6ef1e26c1b60a6a7119c8e5b1241f082fb490d46da9668dc42ff21ac2b952_1920.jpg'
+#IMAGE_URL = 'https://pixabay.com/get/g89677359be522a27c26fc97ad248a3d180c6ef1e26c1b60a6a7119c8e5b1241f082fb490d46da9668dc42ff21ac2b952_1920.jpg'
 
-tf.compat.v1.app.flags.DEFINE_string('server', 'localhost:8500',
+# Caretta Caretta
+#IMAGE_URL = 'https://upload.wikimedia.org/wikipedia/commons/5/53/Caretta_caretta_060417w2.jpg'
+
+IMAGE_URL = sys.argv[1]
+
+tf.compat.v1.app.flags.DEFINE_string('server', 'localhost_non_exist:8500',
                                      'PredictionService host:port')
 tf.compat.v1.app.flags.DEFINE_string('image', '',
                                      'path to image in JPEG format')
@@ -1071,8 +1077,8 @@ def main(_):
   #print(result['outputs'])
   p_json = MessageToDict(result)
   class_int = p_json['outputs']['classes']['int64Val']
-  print('Image Class Int',class_int[0])
-  print('Image Class Label', image_net_labels[int(class_int[0])-1])
+  print('Image Class Int ==> ',class_int[0])
+  print('Image Class Label ==> ', image_net_labels[int(class_int[0])])
 
 if __name__ == '__main__':
   tf.compat.v1.app.run()

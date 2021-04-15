@@ -29,6 +29,7 @@ cp tfvars/terraform.tfvars.pkaul ./terraform.tfvars
 
 #[TODO] Get SA JSON
 
+gcloud auth activate-service-account --key-file=/home/puneith/abm-sa.json
 gcloud compute firewall-rules create ssh --allow tcp:22
 
 # Terraform instructions

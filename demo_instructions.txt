@@ -1,8 +1,56 @@
-#Welcome to the Demo
+# Welcome to the ABM TensorFlow Demo
 
-#Let's setup some ABM infrastructure on GCE using Terraform
+# Install Git 
+sudo apt-get install git
+
+# Install Terraform
+# v0.14.10
+sudo apt-get install software-properties-common
+
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt-get update && sudo apt-get install terraform
+
+terraform -version
+
+# Let's setup some ABM infrastructure on GCE using Terraform
 git clone https://github.com/GoogleCloudPlatform/anthos-samples.git
 cd anthos-samples
 git checkout abm-gcp-tf-demo
+cd anthos-bm-gcp-terraform
 
-#Make changes to cluster names
+# Make changes to cluster names and few edits
+cp tfvars/terraform.tfvars.pkaul ./terraform.tfvars
+
+# gcloud SA json
+#[TODO] Get SA account
+#gcloud iam service-accounts keys create ~/abm-sa.json
+
+# Terraform instructions
+terraform init
+teraform plan
+terraform apply
+
+# Let's go to pantheon and verify resources
+
+# Let's create cluster using bmctl and perform pre-flight checks and verify
+export CLUSTER_ID=abm-tensorflow
+export KUBECONFIG=$HOME/bmctl-workspace/$CLUSTER_ID/$CLUSTER_ID-kubeconfig
+
+kubectl get nodes
+
+# Let's work on TensorFlow ResNet serving model on ABM Cluster
+git clone https://github.com/puneith/serving.git
+cd serving
+
+kubectl create -f tensorflow_serving/example/resnet_k8s.yaml
+
+# Let's view deployments and pods
+kubectl get deployments
+kubectl get pods
+
+kubectl get services
+kubectl describe service resnet-service
+
+# Let's send prediction request to ResNet service on ABM
+sudo tools/run_in_docker.sh python tensorflow_serving/example/resnet_client_grpc.py $IMAGE_URL --server=10.200.0.51:8500

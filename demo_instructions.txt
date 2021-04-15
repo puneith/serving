@@ -5,6 +5,9 @@ sudo apt-get install git
 
 # Install Terraform
 # v0.14.10
+# Remove any previous versions
+sudo apt remove terraform
+
 sudo apt-get install software-properties-common
 
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -

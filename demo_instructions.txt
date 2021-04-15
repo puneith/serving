@@ -25,6 +25,7 @@ git checkout abm-gcp-tf-demo
 cd anthos-bm-gcp-terraform
 
 # Make changes to cluster names and few edits
+# [DO THIS] Change tfvars/terraform.tfvars.pkaul cluster_id
 cp tfvars/terraform.tfvars.pkaul ./terraform.tfvars
 
 #[TODO] Get SA JSON

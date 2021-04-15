@@ -27,9 +27,7 @@ cd anthos-bm-gcp-terraform
 # Make changes to cluster names and few edits
 cp tfvars/terraform.tfvars.pkaul ./terraform.tfvars
 
-# gcloud SA json
-#[TODO] Get SA account
-#gcloud iam service-accounts keys create ~/abm-sa.json
+#[TODO] Get SA JSON
 
 # Terraform instructions
 terraform init

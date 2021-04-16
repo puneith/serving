@@ -26,6 +26,7 @@ cd anthos-bm-gcp-terraform
 
 # Make changes to cluster names and few edits
 # [DO THIS] Change tfvars/terraform.tfvars.pkaul cluster_id
+# [DO THIS] Change variables.tf baremetal-gcr-demo service account change
 cp tfvars/terraform.tfvars.pkaul ./terraform.tfvars
 
 #[TODO] Get SA JSON

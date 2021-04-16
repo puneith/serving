@@ -1,5 +1,13 @@
 # Welcome to the ABM TensorFlow ResNet Model Serving Demo
 
+# Let's create a demo machine
+export DEMO_HOST="abm-demo-host"
+
+gcloud compute instances create $DEMO_HOST --zone=us-central1-a
+
+# Now ssh into the demo machine and perform steps below
+ssh-gce $DEMO_HOST
+
 # Install Git 
 sudo apt-get install git
 

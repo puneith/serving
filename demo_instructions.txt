@@ -36,6 +36,7 @@ gcloud compute firewall-rules create ssh --allow tcp:22
 
 # Change cluster name and service account name
 echo "abm-tensorflow-"$(date +"%m%d%H%M")
+[TODO] Change variables.tf and terraform.tfvars
 
 # Terraform instructions
 terraform init

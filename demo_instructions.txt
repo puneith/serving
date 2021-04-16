@@ -1,4 +1,4 @@
-# Welcome to the ABM TensorFlow Demo
+# Welcome to the ABM TensorFlow ResNet Model Serving Demo
 
 # Install Git 
 sudo apt-get install git

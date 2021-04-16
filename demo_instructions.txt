@@ -5,6 +5,8 @@ export DEMO_HOST="abm-demo-host"
 
 gcloud compute instances create $DEMO_HOST --zone=us-central1-a
 
+# Now scp service account JSON
+
 # Now ssh into the demo machine and perform steps below
 ssh-gce $DEMO_HOST
 

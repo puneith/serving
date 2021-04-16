@@ -34,7 +34,8 @@ cp tfvars/terraform.tfvars.pkaul ./terraform.tfvars
 gcloud auth activate-service-account --key-file=/home/puneith/abm-sa.json
 gcloud compute firewall-rules create ssh --allow tcp:22
 
-# [TOOD] change cluster name from abm-tensorflow
+# Change cluster name and service account name
+echo "abm-tensorflow-"$(date +"%m%d%H%M")
 
 # Terraform instructions
 terraform init
